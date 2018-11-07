@@ -45,9 +45,12 @@ public class RegistLoginController {
                 //保存当前用户
                 userService.saveUser(user);
             } else {
+                //如果当前用户名已存在返回信息
                 return JSONResult.errorMsg("用户名已存在，请换一个试试");
             }
-            return JSONResult.ok();
+            //注册成功保存用户信息
+            user.setPassword("");
+            return JSONResult.ok(user);
         } catch (Exception e) {
             e.printStackTrace();
             return JSONResult.errorMsg("系统出错，请重新尝试，或者联系我们的维护人员:xqwQAQwq@163.com");
