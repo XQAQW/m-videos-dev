@@ -19,7 +19,7 @@ public class RegistLoginController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value ="用户登录",notes = "用户注册的接口")
+    @ApiOperation(value ="用户注册",notes = "用户注册的接口")
     @PostMapping("/regist")
     public JSONResult regist(@RequestBody Users user) {
         try {
@@ -50,7 +50,7 @@ public class RegistLoginController {
             return JSONResult.ok();
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return JSONResult.errorMsg("系统出错，请重新尝试，或者联系我们的维护人员:xqwQAQwq@163.com");
         }
     }
 

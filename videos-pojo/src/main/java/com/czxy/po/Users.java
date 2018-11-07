@@ -1,11 +1,15 @@
 package com.czxy.po;
 
-import javax.persistence.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.*;
+@ApiModel(value = "用户对象",description = "这是用户对象")
 public class Users {
     /**
      * 主键
      */
+    @ApiModelProperty(hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
@@ -13,16 +17,19 @@ public class Users {
     /**
      * 用户名
      */
+    @ApiModelProperty(value = "用户名",name = "username",example = "m",required = true)
     private String username;
 
     /**
      * 密码
      */
+    @ApiModelProperty(value = "密码",name = "password",example = "yishengsuoai2",required = true)
     private String password;
 
     /**
      * 头像
      */
+    @ApiModelProperty(hidden = true)
     @Column(name = "face_image")
     private String faceImage;
 
@@ -34,18 +41,21 @@ public class Users {
     /**
      * 粉丝数量
      */
+    @ApiModelProperty(hidden = true)
     @Column(name = "fans_counts")
     private Integer fansCounts;
 
     /**
-     * 关注
+     * 我关注的人总数
      */
+    @ApiModelProperty(hidden = true)
     @Column(name = "follow_counts")
     private Integer followCounts;
 
     /**
-     * 获赞数
+     * 我接受到的赞美/收藏 的数量
      */
+    @ApiModelProperty(hidden = true)
     @Column(name = "receive_like_counts")
     private Integer receiveLikeCounts;
 
