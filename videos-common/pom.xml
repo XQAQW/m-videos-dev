@@ -11,6 +11,10 @@
 
     <artifactId>videos-common</artifactId>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
