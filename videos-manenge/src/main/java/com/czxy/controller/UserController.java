@@ -1,6 +1,7 @@
 package com.czxy.controller;
 
 import com.czxy.po.Users;
+import com.czxy.po.vo.UsersVO;
 import com.czxy.service.UserService;
 import com.czxy.utils.JSONResult;
 import io.swagger.annotations.Api;
@@ -8,6 +9,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,6 +95,27 @@ public class UserController {
         user.setFaceImage(uploadPathDB);
         //更新到数据库中
         userService.updateUserInfo(user);
-        return JSONResult.ok();
+
+        return JSONResult.ok(uploadPathDB);
+    }
+
+    @ApiOperation(value = "查询用户信息",notes = "查询用户信息的接口")
+    @ApiImplicitParam(name = "userId",value = "用户id",required = true,
+                        dataType = "String",paramType = "query")
+    @PostMapping("/query")
+    public JSONResult query(String userId) {
+        try {
+            if (StringUtils.isNotBlank(userId)) {
+                return JSONResult.errorMsg("用户id不能为空...");
+            }
+
+            Users userInfo = userService.queryUserInfo(userId);
+            UsersVO usersVO = new UsersVO();
+            BeanUtils.copyProperties(userInfo, usersVO);
+            return JSONResult.ok(usersVO);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JSONResult.errorMsg("系统出现错误，请重新尝试!");
+        }
     }
 }

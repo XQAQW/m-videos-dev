@@ -1,5 +1,6 @@
 package com.czxy.po.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -28,6 +29,7 @@ public class UsersVO {
      * 密码
      */
     @ApiModelProperty(value = "密码",name = "password",example = "yishengsuoai2",required = true)
+    @JsonIgnore //加上这个注解password也不会被传出去
     private String password;
 
     /**
