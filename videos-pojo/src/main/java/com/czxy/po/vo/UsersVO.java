@@ -14,28 +14,23 @@ public class UsersVO {
     /**
      * 主键
      */
-    @ApiModelProperty(hidden = true)
     private String id;
 
-    @ApiModelProperty(hidden = true)
     private String userToken;
     /**
      * 用户名
      */
-    @ApiModelProperty(value = "用户名",name = "username",example = "m",required = true)
     private String username;
 
     /**
      * 密码
      */
-    @ApiModelProperty(value = "密码",name = "password",example = "yishengsuoai2",required = true)
     @JsonIgnore //加上这个注解password也不会被传出去
     private String password;
 
     /**
      * 头像
      */
-    @ApiModelProperty(hidden = true)
     private String faceImage;
 
     /**
@@ -46,19 +41,16 @@ public class UsersVO {
     /**
      * 粉丝数量
      */
-    @ApiModelProperty(hidden = true)
     private Integer fansCounts;
 
     /**
      * 我关注的人总数
      */
-    @ApiModelProperty(hidden = true)
     private Integer followCounts;
 
     /**
      * 我接受到的赞美/收藏 的数量
      */
-    @ApiModelProperty(hidden = true)
     private Integer receiveLikeCounts;
 
     public String getUserToken() {

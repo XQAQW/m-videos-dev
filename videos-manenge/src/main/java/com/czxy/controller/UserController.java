@@ -95,7 +95,7 @@ public class UserController {
         user.setFaceImage(uploadPathDB);
         //更新到数据库中
         userService.updateUserInfo(user);
-
+        //返回
         return JSONResult.ok(uploadPathDB);
     }
 
@@ -105,7 +105,7 @@ public class UserController {
     @PostMapping("/query")
     public JSONResult query(String userId) {
         try {
-            if (StringUtils.isNotBlank(userId)) {
+            if (StringUtils.isBlank(userId)) {
                 return JSONResult.errorMsg("用户id不能为空...");
             }
 
