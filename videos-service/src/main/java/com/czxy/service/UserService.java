@@ -9,13 +9,19 @@ public interface UserService {
      * @param username
      * @return
      */
-    public boolean queryUsernameIsExist(String username);
+    boolean queryUsernameIsExist(String username);
 
     /**
      * 保存用户
      * @param user
      */
-    public void saveUser(Users user);
+    void saveUser(Users user);
 
     Users queryUserForLogin(String username, String password);
+
+    /**
+     * 用户修改信息
+     * @param user
+     */
+    void updateUserInfo(Users user);
 }

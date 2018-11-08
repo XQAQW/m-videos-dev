@@ -48,4 +48,13 @@ public class UserServiceImpl implements UserService {
         //返回查询结果
         return usersMapper.selectOneByExample(example);
     }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void updateUserInfo(Users user) {
+        Example example = new Example(Users.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("id", user.getId());
+        usersMapper.updateByExampleSelective(user, example);
+    }
 }

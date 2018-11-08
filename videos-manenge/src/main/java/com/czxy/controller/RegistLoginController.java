@@ -123,15 +123,24 @@ public class RegistLoginController extends BasicController{
         }
     }
 
-    @PostMapping("/logout/query")
+    /**
+     * 注销功能
+     * @param userId
+     * @return
+     */
+    @PostMapping("/logout")
     @ApiOperation(value = "用户注销",notes = "用户注销的接口")
     @ApiImplicitParam(name = "userId", value = "用户id", required = true, dataType = "String", paramType = "query")
-    public JSONResult login(String userId,String id) {
+    public JSONResult login(String userId) {
         try {
+            //调用redis根据传送过来的token从redis中删除用户
             redis.del(USER_REDIS_SESSION + ":" + userId);
+            //返回
             return JSONResult.ok("注销成功");
         } catch (Exception e) {
+            //打印报错信息
             e.printStackTrace();
+            //后台500，返回信息
             return JSONResult.errorMsg("系统出现错误，请通过邮箱xqwQAQwq@163.com联系我们");
         }
     }
