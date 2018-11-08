@@ -6,6 +6,7 @@ import com.czxy.service.UserService;
 import com.czxy.utils.JSONResult;
 import com.czxy.utils.MD5Utils;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -122,4 +123,16 @@ public class RegistLoginController extends BasicController{
         }
     }
 
+    @PostMapping("/logout/query")
+    @ApiOperation(value = "用户注销",notes = "用户注销的接口")
+    @ApiImplicitParam(name = "userId", value = "用户id", required = true, dataType = "String", paramType = "query")
+    public JSONResult login(String userId,String id) {
+        try {
+            redis.del(USER_REDIS_SESSION + ":" + userId);
+            return JSONResult.ok("注销成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JSONResult.errorMsg("系统出现错误，请通过邮箱xqwQAQwq@163.com联系我们");
+        }
+    }
 }

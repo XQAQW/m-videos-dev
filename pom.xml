@@ -32,6 +32,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
+            <dependency>
+                <groupId>io.lettuce</groupId>
+                <artifactId>lettuce-core</artifactId>
+                <version>5.1.0.RELEASE</version>
+            </dependency>
             <!-- 引入log4j日志依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -77,7 +83,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-redis</artifactId>
-                <version>1.8.7.RELEASE</version>
+                <version>2.0.4.RELEASE</version>
             </dependency>
 
             <dependency>
