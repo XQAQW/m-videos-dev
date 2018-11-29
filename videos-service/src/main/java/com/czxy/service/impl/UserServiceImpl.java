@@ -1,4 +1,4 @@
-package com.czxy.service.com.czxy.service.impl;
+package com.czxy.service.impl;
 
 import com.czxy.mapper.UsersMapper;
 import com.czxy.po.Users;

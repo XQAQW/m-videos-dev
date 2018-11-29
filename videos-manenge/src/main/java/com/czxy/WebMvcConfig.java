@@ -11,7 +11,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 //资源映射
         registry.addResourceHandler("/**")
                 //添加映射可以让外界访问
-                .addResourceLocations("classpath:/META-INF/RESOURCES/")
+                .addResourceLocations("classpath:/META-INF/resources/")
                 //所在的目录
                 .addResourceLocations("file:/usr/local/programing/WeChartProject/video_dev/videos_dev_image/");
     }

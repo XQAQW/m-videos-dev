@@ -105,13 +105,18 @@ public class UserController {
     @PostMapping("/query")
     public JSONResult query(String userId) {
         try {
+            //判断传送过来的id是否为空
             if (StringUtils.isBlank(userId)) {
+                //返回
                 return JSONResult.errorMsg("用户id不能为空...");
             }
-
+            //查询当前id用户
             Users userInfo = userService.queryUserInfo(userId);
+            //创建vo
             UsersVO usersVO = new UsersVO();
+            //copy
             BeanUtils.copyProperties(userInfo, usersVO);
+            //返回
             return JSONResult.ok(usersVO);
         } catch (Exception e) {
             e.printStackTrace();
